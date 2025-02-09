@@ -1,5 +1,8 @@
 import Banner from "@/components/home/Banner/Banner";
+import Blog from "@/components/home/Blog/Blog";
+import Project from "@/components/home/Project/Project";
 import Skills from "@/components/home/Skills/Skills";
+import Footer from "@/components/shared/Footer/Footer";
 
 import Navbar from "@/components/shared/Navbar";
 
@@ -14,6 +17,9 @@ export default function Home() {
         </div>
       </div>
       <Skills />
+      <Project />
+      <Blog />
+      <Footer />
     </div>
   );
 }

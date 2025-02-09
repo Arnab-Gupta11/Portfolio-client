@@ -26,7 +26,7 @@ const Navbar = () => {
         scrolled ? "backdrop-blur-md shadow-md" : "bg-none border-b border-slate-300 dark:border-slate-900"
       } transition-colors duration-500 ${location.pathname === "/" ? "fixed" : "sticky"} top-0 w-full h-20 z-20`}
     >
-      <div className="max-w-screen-xl mx-5 lg:mx-10 xl:mx-auto flex justify-between items-center  my-auto h-full">
+      <div className="max-w-screen-xl mx-5 px-3 xs:px-5 md:px-10 xl:px-0 xl:mx-auto flex justify-between items-center  my-auto h-full">
         <div>
           <div className="hidden xs:flex">
             {/* <h1 className="text-black text-2xl font-bold">

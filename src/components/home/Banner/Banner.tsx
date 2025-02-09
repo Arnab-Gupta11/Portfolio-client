@@ -39,7 +39,7 @@ const Banner = () => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }} // Triggers when 20% of the component is visible
     >
-      <div className="max-w-screen-xl mx-5 lg:mx-10 xl:mx-auto">
+      <div className="max-w-screen-xl px-3 xs:px-5 md:px-10 xl:px-0 xl:mx-auto">
         <div className="flex flex-col items-center justify-center lg:flex-row-reverse lg:justify-between lg:p-0">
           {/* Profile Image */}
           <motion.div
