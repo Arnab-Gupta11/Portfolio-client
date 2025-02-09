@@ -29,6 +29,7 @@ export default {
         kanit: ["var(--font-kanit)"],
       },
       colors: {
+        primary: "#9747FF",
         "light-primary-txt": "#04091E",
         "light-secondary-txt": "#747681",
         "dark-primary-txt": "#fdfeff",

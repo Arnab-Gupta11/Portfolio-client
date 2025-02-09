@@ -1,6 +1,7 @@
-import Banner from "@/components/home/Banner";
+import Banner from "@/components/home/Banner/Banner";
+import Skills from "@/components/home/Skills/Skills";
+
 import Navbar from "@/components/shared/Navbar";
-import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
@@ -12,8 +13,7 @@ export default function Home() {
           <Banner />
         </div>
       </div>
-      <h1 className="text-red-500">Portfolio</h1>
-      <Button>Hello</Button>
+      <Skills />
     </div>
   );
 }
