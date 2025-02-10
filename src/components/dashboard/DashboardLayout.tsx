@@ -13,9 +13,7 @@ import Link from "next/link";
 import SidebarItem from "@/components/dashboard/shared/SidebarItem";
 import { ThemeToggler } from "../shared/ThemeToggler/ThemeTogler";
 import { signOut } from "next-auth/react";
-import { useRouter } from "next/navigation";
 export default function DashboardLayout({ children }: { children: ReactNode }) {
-  const router = useRouter();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   // const user = useAppSelector(useCurrentUser);
   const menuItems = [
@@ -38,10 +36,6 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
       Icon: FaUsers,
     },
   ];
-  const handleLogout = () => {
-    signOut();
-    router.push("/");
-  };
   return (
     <div className="flex h-screen">
       {/* Sidebar */}
@@ -82,7 +76,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
               <BiHome className="text-xl text-light-primary-txt dark:text-dark-primary-txt hover:scale-105 hover:cursor-pointer shadow-md w-9 h-9 p-2 rounded-md dark:shadow-slate-800" />
             </Link>
             <ThemeToggler />
-            <span onClick={handleLogout} className="cursor-pointer shadow-md w-9 h-9 p-2 rounded-md dark:shadow-slate-800">
+            <span onClick={() => signOut()} className="cursor-pointer shadow-md w-9 h-9 p-2 rounded-md dark:shadow-slate-800">
               <HiOutlineLogout className=" text-red-600 text-2xl" />
             </span>
             {/* <ProfileAvatar /> */}
