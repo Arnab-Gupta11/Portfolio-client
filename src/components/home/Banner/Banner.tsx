@@ -79,9 +79,9 @@ const Banner = () => {
               viewport={{ once: true, amount: 0.3 }}
             >
               <a href="/resume.pdf" download="Arnab-Gupta-resume.pdf" data-tip="Download">
-                <Button>
+                <Button className="group">
                   <span className="flex items-center gap-1">
-                    <IoMdDownload />
+                    <IoMdDownload className="group-hover:animate-bounce ease-in-out" />
                     Resume
                   </span>
                 </Button>

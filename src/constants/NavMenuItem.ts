@@ -12,20 +12,25 @@ export const NavMenuOption = () => {
       show: true,
     },
     {
-      label: "Shop",
-      path: "/shop",
+      label: "projects",
+      path: "/projects",
+      show: true,
+    },
+    // {
+    //   label: "Blog",
+    //   path: "/dashboard",
+    //   show: true,
+    //   // path: `${user?.role === "admin" ? "/dashboard/manage-products" : "/dashboard/view-orders"}`,
+    //   // show: user?.role === "user" || user?.role === "admin",
+    // },
+    {
+      label: "Blogs",
+      path: "/blogs",
       show: true,
     },
     {
-      label: "Dashboard",
-      path: "/dashboard",
-      show: true,
-      // path: `${user?.role === "admin" ? "/dashboard/manage-products" : "/dashboard/view-orders"}`,
-      // show: user?.role === "user" || user?.role === "admin",
-    },
-    {
-      label: "About",
-      path: "/about",
+      label: "Contact",
+      path: "/contact",
       show: true,
     },
   ];

@@ -34,6 +34,8 @@ export default {
         "light-secondary-txt": "#747681",
         "dark-primary-txt": "#fdfeff",
         "dark-secondary-txt": "#a9adb8",
+        "dark-bg-primary": "#070D1B",
+        "dark-bg-secondary": "#0A101E",
       },
       // backgroundImage: {
       //   'light-bg': "url('')",

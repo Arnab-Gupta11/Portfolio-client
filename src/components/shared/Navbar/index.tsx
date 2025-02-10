@@ -6,8 +6,11 @@ import NavItem from "./NavItem";
 import { NavMenuOption } from "@/constants/NavMenuItem";
 import Link from "next/link";
 import { ThemeToggler } from "../ThemeToggler/ThemeTogler";
+import { usePathname } from "next/navigation";
+import NavSidebar from "./NavSidebar";
 
 const Navbar = () => {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const menuItems = NavMenuOption();
   const handleChangeBackgroundOnScroll = () => {
@@ -23,8 +26,8 @@ const Navbar = () => {
   return (
     <div
       className={`${
-        scrolled ? "backdrop-blur-md shadow-md" : "bg-none border-b border-slate-300 dark:border-slate-900"
-      } transition-colors duration-500 ${location.pathname === "/" ? "fixed" : "sticky"} top-0 w-full h-20 z-20`}
+        scrolled ? "backdrop-blur-md shadow-md dark:shadow-slate-800" : "bg-none border-b border-slate-300 dark:border-slate-800"
+      } transition-colors duration-500 ${pathname === "/" ? "fixed" : "sticky dark:bg-dark-bg-primary bg-[#F4F8FB]"} top-0 w-full h-20 z-20`}
     >
       <div className="max-w-screen-xl mx-5 px-3 xs:px-5 md:px-10 xl:px-0 xl:mx-auto flex justify-between items-center  my-auto h-full">
         <div>
@@ -40,7 +43,15 @@ const Navbar = () => {
           <div className="hidden lg:flex gap-6 items-center font-medium ">
             {menuItems.map((menuItem, idx) =>
               menuItem.show ? (
-                <Link key={idx} href={menuItem.path} className="border-b-[3px] border-primary-text hover:text-primary-bg ease-in-outs duration-700">
+                <Link
+                  key={idx}
+                  href={menuItem.path}
+                  className={`font-medium ${
+                    pathname === menuItem.path
+                      ? "text-primary text-lg"
+                      : "text-light-primary-txt dark:text-dark-primary-txt hover:text-primary duration-500 ease-in-out text-base"
+                  }`}
+                >
                   <NavItem label={menuItem.label} active={true} />
                 </Link>
               ) : null
@@ -49,7 +60,7 @@ const Navbar = () => {
 
           <div className="flex items-center">
             <ThemeToggler />
-            {/* <NavSidebar menuItems={menuItems} /> */}
+            <NavSidebar menuItems={menuItems} />
           </div>
         </div>
       </div>
