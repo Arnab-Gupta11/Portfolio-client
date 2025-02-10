@@ -1,4 +1,5 @@
 "use client";
+import { HiOutlineLogout } from "react-icons/hi";
 import { ReactNode, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -11,7 +12,10 @@ import { FaBox, FaShoppingCart, FaUsers } from "react-icons/fa";
 import Link from "next/link";
 import SidebarItem from "@/components/dashboard/shared/SidebarItem";
 import { ThemeToggler } from "../shared/ThemeToggler/ThemeTogler";
+import { signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
 export default function DashboardLayout({ children }: { children: ReactNode }) {
+  const router = useRouter();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   // const user = useAppSelector(useCurrentUser);
   const menuItems = [
@@ -34,7 +38,10 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
       Icon: FaUsers,
     },
   ];
-
+  const handleLogout = () => {
+    signOut();
+    router.push("/");
+  };
   return (
     <div className="flex h-screen">
       {/* Sidebar */}
@@ -70,11 +77,14 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
               <Menu className="w-6 h-6" />
             </Button>
           </div>
-          <div className="flex items-center pl-5">
-            <Link className="pr-5" href={"/"}>
-              <BiHome className="text-xl text-light-primary-txt dark:text-dark-primary-txt hover:scale-105 hover:cursor-pointer" />
+          <div className="flex items-center pl-5 gap-5">
+            <Link className="" href={"/"}>
+              <BiHome className="text-xl text-light-primary-txt dark:text-dark-primary-txt hover:scale-105 hover:cursor-pointer shadow-md w-9 h-9 p-2 rounded-md dark:shadow-slate-800" />
             </Link>
             <ThemeToggler />
+            <span onClick={handleLogout} className="cursor-pointer shadow-md w-9 h-9 p-2 rounded-md dark:shadow-slate-800">
+              <HiOutlineLogout className=" text-red-600 text-2xl" />
+            </span>
             {/* <ProfileAvatar /> */}
           </div>
         </header>

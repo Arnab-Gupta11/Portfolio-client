@@ -8,11 +8,23 @@ import Link from "next/link";
 import { ThemeToggler } from "../ThemeToggler/ThemeTogler";
 import { usePathname } from "next/navigation";
 import NavSidebar from "./NavSidebar";
+import { Button } from "@/components/ui/button";
+import { signOut } from "next-auth/react";
 
-const Navbar = () => {
+export type TUserProps = {
+  user?: {
+    name?: string | null | undefined;
+    email?: string | null | undefined;
+    image?: string | null | undefined;
+  };
+};
+
+const Navbar = ({ session }: { session: TUserProps | null }) => {
+ 
+  console.log(session);
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
-  const menuItems = NavMenuOption();
+  const menuItems = NavMenuOption(session);
   const handleChangeBackgroundOnScroll = () => {
     if (window.scrollY > 0) {
       setScrolled(true);
@@ -23,6 +35,7 @@ const Navbar = () => {
   useEffect(() => {
     window.addEventListener("scroll", handleChangeBackgroundOnScroll);
   }, []);
+
   return (
     <div
       className={`${
@@ -61,6 +74,15 @@ const Navbar = () => {
           <div className="flex items-center">
             <ThemeToggler />
             <NavSidebar menuItems={menuItems} />
+            {session?.user ? (
+              <Button onClick={() => signOut()} className="ml-6">
+                Logout
+              </Button>
+            ) : (
+              <Button className="ml-6">
+                <Link href={"/login"}>Login</Link>
+              </Button>
+            )}
           </div>
         </div>
       </div>

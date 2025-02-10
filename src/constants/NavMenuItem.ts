@@ -1,9 +1,11 @@
+import { TUserProps } from "@/components/shared/Navbar";
+
 export type TNavMenuItem = {
   label: string;
   path: string;
   show: boolean;
 }[];
-export const NavMenuOption = () => {
+export const NavMenuOption = (session: TUserProps | null) => {
   // const user = useAppSelector(useCurrentUser);
   const menuItems = [
     {
@@ -36,7 +38,7 @@ export const NavMenuOption = () => {
     {
       label: "Dashboard",
       path: "/dashboard/blogs",
-      show: true,
+      show: session?.user ? true : false,
     },
   ];
   return menuItems;
