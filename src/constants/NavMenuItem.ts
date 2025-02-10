@@ -33,6 +33,11 @@ export const NavMenuOption = () => {
       path: "/contact",
       show: true,
     },
+    {
+      label: "Dashboard",
+      path: "/dashboard/blogs",
+      show: true,
+    },
   ];
   return menuItems;
 };
