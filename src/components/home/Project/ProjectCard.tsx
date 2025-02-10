@@ -3,7 +3,7 @@ import img from "../../../../public/projects/brand.png";
 import { LuArrowUpRight } from "react-icons/lu";
 const ProjectCard = () => {
   return (
-    <div className="rounded-lg bg-[#f7fbfe] dark:bg-[#101624] shadow-md p-4 group cursor-pointer hover:shadow-lg">
+    <div className="rounded-lg bg-[#f7fbfe] dark:bg-[#101624] shadow-sm p-4 group cursor-pointer hover:shadow-lg border dark:border-[#232935] border-slate-200">
       <div>
         <Image
           src={img}

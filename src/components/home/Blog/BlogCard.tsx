@@ -9,7 +9,7 @@ const BlogCard = () => {
   const description =
     "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis exercitationem commodi nemo nulla reprehenderit fugiat cupiditate soluta minus officia. Vitae, similique earum animi aliquid non voluptatibus tempore alias laudantium enim ducimus, odit perspiciatis praesentium omnis tenetur dignissimos?";
   return (
-    <div className="w-full bg-[#f7fbfe] dark:bg-[#101624] shadow-md rounded-lg overflow-hidden group">
+    <div className="w-full bg-[#f7fbfe] dark:bg-[#101624] shadow-sm rounded-lg overflow-hidden group border dark:border-[#232935] border-slate-200 hover:shadow-lg">
       <div className="relative">
         <figure>
           <Image
