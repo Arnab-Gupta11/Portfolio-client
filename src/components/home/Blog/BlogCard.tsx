@@ -1,19 +1,17 @@
 import Image from "next/image";
 import React from "react";
-import img from "../../../../public/projects/brand.png";
 import Link from "next/link";
 import { RiAccountBoxLine } from "react-icons/ri";
 import { BiCalendar } from "react-icons/bi";
-const BlogCard = () => {
-  const title = "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum reprehenderit ipsa ea.";
-  const description =
-    "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis exercitationem commodi nemo nulla reprehenderit fugiat cupiditate soluta minus officia. Vitae, similique earum animi aliquid non voluptatibus tempore alias laudantium enim ducimus, odit perspiciatis praesentium omnis tenetur dignissimos?";
+import { TBlog } from "@/types/blog.types";
+import { formateDateTime } from "@/utils/formateDateTime";
+const BlogCard = ({ blog }: { blog: TBlog }) => {
   return (
     <div className="w-full bg-[#f7fbfe] dark:bg-[#101624] shadow-sm rounded-lg overflow-hidden group border dark:border-[#232935] border-slate-200 hover:shadow-lg">
       <div className="relative">
         <figure>
           <Image
-            src={img}
+            src={blog?.image}
             width={380}
             height={100}
             alt="blog image"
@@ -26,18 +24,21 @@ const BlogCard = () => {
           </p>
           <p className="flex items-center font-semibold text-sm">
             <BiCalendar className="mr-2" />
-            {"27 - 2 - 2034"}
+            {formateDateTime(blog?.createdAt)}
           </p>
         </div>
       </div>
 
       <div className="p-6">
         <h2 className="text-xl font-bold mt-2 text-light-primary-txt dark:text-dark-primary-txt">
-          {title.length > 30 ? title.slice(0, 30) + "..." : title}{" "}
+          {blog?.title.length > 30 ? blog?.title.slice(0, 30) + "..." : blog?.title}{" "}
         </h2>
         <p className="text-light-secondary-txt dark:text-dark-secondary-txt mt-2">
-          {description.length > 100 ? description.slice(0, 60) + "..." : description}
-          <Link href={`/blogs/${1}`} className="text-primary ml-1 group-hover:underline underline-offset-4 duration-700 transition-all ease-in-out">
+          {blog?.content.length > 100 ? blog?.content.slice(0, 60) + "..." : blog?.content}
+          <Link
+            href={`/blogs/${blog._id}`}
+            className="text-primary ml-1 group-hover:underline underline-offset-4 duration-700 transition-all ease-in-out"
+          >
             Read More
           </Link>
         </p>
