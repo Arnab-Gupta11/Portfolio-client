@@ -1,14 +1,14 @@
 import Image from "next/image";
-import img from "../../../../public/projects/brand.png";
 import { LuArrowUpRight } from "react-icons/lu";
 import Link from "next/link";
-const ProjectCard = () => {
+import { TProject } from "@/types/project.types";
+const ProjectCard = ({ project }: { project: TProject }) => {
   return (
-    <Link href={`/projects/1`}>
+    <Link href={`/projects/${project._id}`}>
       <div className="rounded-lg bg-[#f7fbfe] dark:bg-[#101624] shadow-sm p-4 group cursor-pointer hover:shadow-lg border dark:border-[#232935] border-slate-200">
         <div>
           <Image
-            src={img}
+            src={project?.image}
             width={360}
             height={400}
             alt="img"
@@ -17,7 +17,7 @@ const ProjectCard = () => {
         </div>
         <div className="w-full flex items-center gap-1">
           <h1 className="font-medium text-lg text-light-primary-txt dark:text-dark-primary-txt mt-3 group-hover:text-primary">
-            Title Of The Projects
+            {project?.name?.length > 30 ? project?.name.slice(0, 30) + "..." : project?.name}{" "}
           </h1>
           <LuArrowUpRight className="opacity-0 size-0 group-hover:size-5 text-primary transition-all duration-700 group-hover:opacity-100 translate-y-2" />
         </div>
