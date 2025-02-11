@@ -85,7 +85,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
 
         {/* Content Area */}
         <main className="flex-1 p-6 bg-gray-50 dark:bg-dark-bg-secondary rounded-lg">
-          <div className="p-4 bg-[#F4F8FB] dark:bg-dark-bg-primary rounded-lg shadow-md dark:shadow-slate-900">{children}</div>
+          <div className="p-4 bg-[#F4F8FB] dark:bg-dark-bg-primary rounded-lg shadow-md dark:shadow-slate-900 min-h-screen">{children}</div>
         </main>
       </div>
     </div>
