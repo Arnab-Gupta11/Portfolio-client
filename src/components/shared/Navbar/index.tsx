@@ -20,8 +20,6 @@ export type TUserProps = {
 };
 
 const Navbar = ({ session }: { session: TUserProps | null }) => {
- 
-  console.log(session);
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const menuItems = NavMenuOption(session);
@@ -45,11 +43,9 @@ const Navbar = ({ session }: { session: TUserProps | null }) => {
       <div className="max-w-screen-xl mx-5 px-3 xs:px-5 md:px-10 xl:px-0 xl:mx-auto flex justify-between items-center  my-auto h-full">
         <div>
           <div className="hidden xs:flex">
-            {/* <h1 className="text-black text-2xl font-bold">
-              Note<span className="text-primary-bg">fy</span>
-            </h1> */}
-            {/* <Logo /> */}
-            <h1>Logo</h1>
+            <h1 className="text-light-primary-txt dark:text-dark-primary-txt text-4xl font-bold">
+              A<span className="text-primary">G</span>
+            </h1>
           </div>
         </div>
         <div className="flex gap-5 items-center">

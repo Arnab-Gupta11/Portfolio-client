@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 export async function generateMetadata({ params }: { params: Promise<{ projectId: string }> }) {
   const { projectId } = await params;
-  const res = await fetch(`http://localhost:5000/api/v1/projects/${projectId}`);
+  const res = await fetch(`https://portfolio-server-psi-jet.vercel.app/api/v1/projects/${projectId}`);
   const project = await res.json();
 
   return {
@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ projectId
 
 const ProjectDetails = async ({ params }: { params: Promise<{ projectId: string }> }) => {
   const { projectId } = await params;
-  const res = await fetch(`http://localhost:5000/api/v1/projects/${projectId}`);
+  const res = await fetch(`https://portfolio-server-psi-jet.vercel.app/api/v1/projects/${projectId}`);
   const project = await res.json();
   return (
     <div className="pb-28">

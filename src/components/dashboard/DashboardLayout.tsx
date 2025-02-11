@@ -3,37 +3,32 @@ import { HiOutlineLogout } from "react-icons/hi";
 import { ReactNode, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-// import { Link, NavLink, Outlet } from "react-router-dom";
-// import { useAppSelector } from "@/redux/hooks";
-// import { useCurrentUser } from "@/redux/features/auth/authSlice";
-// import ProfileAvatar from "@/components/shared/Navbar/ProfileAvatar";
 import { BiHome } from "react-icons/bi";
-import { FaBox, FaShoppingCart, FaUsers } from "react-icons/fa";
+import { FaBlog, FaProjectDiagram, FaEnvelope } from "react-icons/fa";
 import Link from "next/link";
 import SidebarItem from "@/components/dashboard/shared/SidebarItem";
 import { ThemeToggler } from "../shared/ThemeToggler/ThemeTogler";
 import { signOut } from "next-auth/react";
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  // const user = useAppSelector(useCurrentUser);
   const menuItems = [
     {
       label: "Manage Blogs",
       path: "/dashboard/blogs",
       show: true,
-      Icon: FaBox,
+      Icon: FaBlog, // 📝 Blog Icon
     },
     {
       label: "Manage Projects",
       path: "/dashboard/projects",
       show: true,
-      Icon: FaShoppingCart,
+      Icon: FaProjectDiagram, // 📁 Project Icon
     },
     {
       label: "View Messages",
       path: "/dashboard/messages",
       show: true,
-      Icon: FaUsers,
+      Icon: FaEnvelope, // ✉️ Message Icon
     },
   ];
   return (
@@ -45,10 +40,10 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
         } lg:translate-x-0 lg:fixed`}
       >
         <div className="flex items-center justify-between p-4 ">
-          <div className="mx-auto">
-            {/* <Logo />
-             */}
-            Logo
+          <div className="ml-5">
+            <span className="text-light-primary-txt dark:text-dark-primary-txt text-4xl font-bold">
+              A<span className="text-primary">G</span>
+            </span>
           </div>
 
           <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setIsSidebarOpen(false)}>

@@ -6,7 +6,13 @@ import Footer from "@/components/shared/Footer/Footer";
 
 import Navbar from "@/components/shared/Navbar";
 import { authOptions } from "@/utils/authOption";
+import { Metadata } from "next";
 import { getServerSession } from "next-auth";
+
+export const metadata: Metadata = {
+  title: "Arnab Gupta",
+  description: "Portfolio",
+};
 
 const HomePage = async () => {
   const session = await getServerSession(authOptions);

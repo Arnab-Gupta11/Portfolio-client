@@ -4,7 +4,7 @@ import { formateDateTime } from "@/utils/formateDateTime";
 import { TBlog } from "@/types/blog.types";
 
 export const generateStaticParams = async () => {
-  const res = await fetch(`http://localhost:5000/api/v1/blogs`);
+  const res = await fetch(`https://portfolio-server-psi-jet.vercel.app/api/v1/blogs`);
   const blogs = await res.json();
   return blogs?.data?.slice(0, 3).map((blog: TBlog) => ({
     blogId: blog._id,
@@ -13,7 +13,7 @@ export const generateStaticParams = async () => {
 
 export async function generateMetadata({ params }: { params: Promise<{ blogId: string }> }) {
   const { blogId } = await params;
-  const res = await fetch(`http://localhost:5000/api/v1/blogs/${blogId}`);
+  const res = await fetch(`https://portfolio-server-psi-jet.vercel.app/api/v1/blogs/${blogId}`);
   const blog = await res.json();
 
   return {
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ blogId: s
 
 const BlogDetailslPage = async ({ params }: { params: Promise<{ blogId: string }> }) => {
   const { blogId } = await params;
-  const res = await fetch(`http://localhost:5000/api/v1/blogs/${blogId}`);
+  const res = await fetch(`https://portfolio-server-psi-jet.vercel.app/api/v1/blogs/${blogId}`);
   const blog = await res.json();
   return (
     <div className="py-10 px-3 xs:px-5 md:px-10 xl:px-0">

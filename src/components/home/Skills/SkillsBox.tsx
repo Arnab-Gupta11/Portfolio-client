@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Image from "next/image";
-import SkillBar from "../Skillss/SkillBar";
+import SkillBar from "./SkillBar";
 type TSkill = {
   label: string;
   icon: any;

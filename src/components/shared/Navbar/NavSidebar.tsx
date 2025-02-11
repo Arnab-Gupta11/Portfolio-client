@@ -20,11 +20,9 @@ const NavSidebar = ({ menuItems }: { menuItems: TNavMenuItem }) => {
         >
           <SheetHeader>
             <SheetTitle className="flex items-start pl-6 mb-6">
-              {/* <h1 className="text-black text-2xl font-bold ml-7 mb-5">
-                Note<span className="text-primary-bg">fy</span>
-              </h1> */}
-              {/* <Logo /> */}
-              Logo
+              <span className="text-light-primary-txt dark:text-dark-primary-txt text-4xl font-bold">
+                A<span className="text-primary">G</span>
+              </span>
             </SheetTitle>
             <SheetDescription className="flex flex-col gap-4 items-start justify-start pl-7">
               {menuItems.map((menuItem, idx) =>

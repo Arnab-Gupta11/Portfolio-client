@@ -1,5 +1,10 @@
 import ContactForm from "@/components/contact/ContactForm";
+import { Metadata } from "next";
 import { IoCall, IoMailUnreadSharp } from "react-icons/io5";
+export const metadata: Metadata = {
+  title: "AG | Contact",
+  description: "Portfolio",
+};
 const ContactPage = () => {
   return (
     <div>

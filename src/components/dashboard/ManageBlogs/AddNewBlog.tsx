@@ -36,7 +36,6 @@ const AddNewBlog = () => {
         category: data.category,
         content: data.content,
       };
-      console.log(blogInfo);
       const res = await addNewBlog(blogInfo).unwrap();
       if (res?.success === true) {
         toast.success(res?.message);

@@ -48,21 +48,11 @@ const ManageBlogs = () => {
   return (
     <div>
       <div className="mb-5 flex flex-col xs:flex-row items-center xs:justify-between gap-5">
-        {/* <div className="relative">
-          <Search className="absolute top-3 left-2 text-slate-500" size={14} />
-          <Input
-            type="text"
-            onChange={handleSearchValue}
-            placeholder="Search Blogs..."
-            className="rounded-lg focus-visible:ring-0 w-full sm:w-56 pl-8 text-slate-700 font-normal"
-          />
-        </div> */}
-        {/* <AddProduct /> */}
         <h1 className="text-2xl font-semibold text-light-primary-txt dark:text-dark-primary-txt">Manage Blogs</h1>
         <Link href="/dashboard/blogs/add-blog">
           <Button>
             <Plus />
-            <span>Add Product</span>
+            <span>Add Blog</span>
           </Button>
         </Link>
       </div>

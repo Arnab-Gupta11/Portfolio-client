@@ -40,7 +40,6 @@ const AddNewProject = () => {
         serverGithubLink: data.serverGithubLink,
         liveLink: data.liveLink,
       };
-      console.log(projectInfo);
       const res = await addNewProject(projectInfo).unwrap();
       if (res?.success === true) {
         toast.success(res?.message);

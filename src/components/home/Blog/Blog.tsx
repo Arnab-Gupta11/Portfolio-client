@@ -7,7 +7,7 @@ import { IoMdArrowRoundForward } from "react-icons/io";
 import { TBlog } from "@/types/blog.types";
 
 const Blog = async () => {
-  const res = await fetch("http://localhost:5000/api/v1/blogs", {
+  const res = await fetch("https://portfolio-server-psi-jet.vercel.app/api/v1/blogs", {
     next: {
       revalidate: 30,
     },

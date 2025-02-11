@@ -27,7 +27,6 @@ const ContactForm = () => {
         email: data.email,
         message: data.message,
       };
-      console.log(messageInfo);
       const res = await addNewMessage(messageInfo).unwrap();
       if (res?.success === true) {
         toast.success(res?.message);

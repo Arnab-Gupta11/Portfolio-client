@@ -6,7 +6,7 @@ import { IoMdArrowRoundForward } from "react-icons/io";
 import { TProject } from "@/types/project.types";
 
 const Project = async () => {
-  const res = await fetch("http://localhost:5000/api/v1/projects", {
+  const res = await fetch("https://portfolio-server-psi-jet.vercel.app/api/v1/projects", {
     next: {
       revalidate: 30,
     },
