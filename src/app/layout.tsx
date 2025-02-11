@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { Kanit } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/ThemeProviders";
+import StoreProviders from "@/providers/StoreProviders";
+import { Toaster } from "react-hot-toast";
 
 const kanit = Kanit({
   weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
@@ -21,12 +23,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${kanit.variable}`} suppressHydrationWarning>
-      <body className="font-kanit">
-        <ThemeProvider attribute="class" defaultTheme="system">
-          {children}
-        </ThemeProvider>
-      </body>
-    </html>
+    <StoreProviders>
+      <html lang="en" className={`${kanit.variable}`} suppressHydrationWarning>
+        <body className="font-kanit">
+          <Toaster position="top-right" reverseOrder={false} />
+          <ThemeProvider attribute="class" defaultTheme="system">
+            {children}
+          </ThemeProvider>
+        </body>
+      </html>
+    </StoreProviders>
   );
 }
