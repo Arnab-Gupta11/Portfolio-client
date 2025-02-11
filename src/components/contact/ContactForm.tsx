@@ -1,85 +1,108 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-
+import toast from "react-hot-toast";
 import { Button } from "../ui/button";
-
-// import { useRef } from "react";
-// import emailjs from "@emailjs/browser";
-// import toast from "react-hot-toast";
+import { Label } from "../ui/label";
+import { useForm } from "react-hook-form";
+import { useAddNewMessageMutation } from "@/redux/features/message/message.api";
+import { useState } from "react";
+import { BiLoaderCircle } from "react-icons/bi";
 const ContactForm = () => {
-  // const form = useRef("");
+  const [loading, setLoading] = useState(false);
+  const [addNewMessage] = useAddNewMessageMutation(undefined);
 
-  // const sendEmail = (e) => {
-  //   e.preventDefault();
-  //   // emailjs.sendForm("service_d9zmwq9", "template_vvachrl", form.current, "27-ZfLGACdyZdXakn").then(
-  //   //   (result) => {
-  //   //     console.log(result);
-  //   //     if (result.status === 200) {
-  //   //       toast.success("Email Sent");
-  //   //       e.target.reset();
-  //   //     }
-  //   //   },
-  //   //   (error) => {
-  //   //     console.log(error.text);
-  //   //   }
-  //   // );
-  // };
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = async (data: any) => {
+    try {
+      setLoading(true);
+      const messageInfo = {
+        name: data.name,
+        phone: data.phone,
+        email: data.email,
+        message: data.message,
+      };
+      console.log(messageInfo);
+      const res = await addNewMessage(messageInfo).unwrap();
+      if (res?.success === true) {
+        toast.success(res?.message);
+        reset();
+      }
+    } catch (err: any) {
+      toast.error(err?.data?.message);
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className=" max-w-lg mx-auto bg-[#f7fbfe] dark:bg-dark-bg-secondary rounded-lg shadow-md dark:shadow-slate-900 border dark:border-[#232935] border-slate-200">
-      <form
-        // ref={form}
-        // onSubmit={sendEmail}
-        className="w-full p-3 xsm:p-5 md:p-10 "
-      >
+      <form onSubmit={handleSubmit(onSubmit)} autoComplete="off" className="w-full p-3 xsm:p-5 md:p-10 ">
         <div className="w-full">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 lg:gap-8">
             <div className="mb-5">
+              <Label className="mb-2">Your Name</Label>
               <input
                 type="name"
                 id="name"
-                className="bg-[#f0f6fa] dark:bg-[#101624] text-light-primary-txt dark:text-[#EAF9F7] text-sm  focus-within:outline-none  block p-2.5 w-full rounded-lg border border-slate-200 dark:border-slate-800"
+                className="bg-[#f0f6fa] dark:bg-[#101624] text-light-primary-txt dark:text-[#EAF9F7] text-sm  focus-within:outline-none  block p-2.5 w-full rounded-lg border border-slate-200 dark:border-slate-800 mt-1"
                 placeholder="Name*"
-                name="user_name"
-                required
+                {...register("name", { required: true })}
               />
+              {errors.name && <span className="text-red-600 text-xs font-medium mt-0 ml-1">Name is required</span>}
             </div>
 
             <div className="mb-5">
+              <Label className="mb-2">Your Phone No</Label>
               <input
                 type="text"
                 id="phone"
-                className="bg-[#f0f6fa] dark:bg-[#101624] text-light-primary-txt dark:text-[#EAF9F7] text-sm  focus-within:outline-none  block p-2.5 w-full rounded-lg border border-slate-200 dark:border-slate-800"
+                className="bg-[#f0f6fa] dark:bg-[#101624] text-light-primary-txt dark:text-[#EAF9F7] text-sm  focus-within:outline-none  block p-2.5 w-full rounded-lg border border-slate-200 dark:border-slate-800 mt-1"
                 placeholder="Phone No*"
-                name="phone"
-                required
+                {...register("phone", { required: true })}
               />
+              {errors.phone && <span className="text-red-600 text-xs font-medium mt-0 ml-1">Phone no is required</span>}
             </div>
           </div>
 
           <div>
-            <div className="">
+            <div className="mb-5">
+              <Label className="mb-2">Your Email</Label>
               <input
                 type="email"
                 id="email"
-                className="bg-[#f0f6fa] dark:bg-[#101624] text-light-primary-txt dark:text-[#EAF9F7] text-sm  focus-within:outline-none  block p-2.5 w-full rounded-lg border border-slate-200 dark:border-slate-800"
+                className="bg-[#f0f6fa] dark:bg-[#101624] text-light-primary-txt dark:text-[#EAF9F7] text-sm focus-within:outline-none block p-2.5 w-full rounded-lg border border-slate-200 dark:border-slate-800 mt-1"
                 placeholder="email*"
-                name="user_email"
-                required
+                {...register("email", {
+                  required: "Email is required",
+                  pattern: {
+                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                    message: "Invalid email format",
+                  },
+                })}
               />
+              {errors.email && <span className="text-red-600 text-xs font-medium mt-0 ml-1">{errors.email.message as string}</span>}
             </div>
           </div>
         </div>
         <div className="grid grid-cols-1">
+          <Label className="mb-1">Your Message</Label>
           <textarea
-            name="message"
-            id=""
-            // cols="53"
             rows={5}
-            className="bg-[#f0f6fa] dark:bg-[#101624] text-light-primary-txt dark:text-[#EAF9F7] text-sm  focus-within:outline-none rounded-lg border border-slate-200 dark:border-slate-800 block  p-2.5 my-5 w-full lg:w-full"
-            placeholder="Your Message*"
-          ></textarea>
+            className="bg-[#f0f6fa] dark:bg-[#101624] text-light-primary-txt dark:text-[#EAF9F7] text-sm  focus-within:outline-none rounded-lg border border-slate-200 dark:border-slate-800 block  p-2.5 w-full lg:w-full"
+            placeholder="Write Your Message*"
+            {...register("message", { required: true })}
+          />
+          {errors.message && <span className="text-red-600 text-xs font-medium mt-1 ml-1">Message is required</span>}
         </div>
 
-        <Button>Send Message</Button>
+        <Button type="submit" disabled={loading} className="sm-mx:w-full w-32 mt-5">
+          {loading ? <BiLoaderCircle className="animate-spin" /> : "Send Message"}
+        </Button>
       </form>
     </div>
   );
